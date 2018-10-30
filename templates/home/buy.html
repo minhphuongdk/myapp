@@ -1,0 +1,256 @@
+
+{% extends 'home/layout.html' %}
+{% block title %}Mua iphone{% endblock %}
+{% block content %}
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="static/css/buy.css">
+<script type="text/javascript"  src="static/js/buy.js"></script>
+<style type="text/css">
+i:hover{
+transform: scale(1.2);
+}
+.grabbing {cursor: -webkit-grabbing; cursor: grabbing;}
+.my-cart-b{
+box-shadow: none;
+}
+</style>
+<body>
+<main>
+<div class="table">
+<div class="table-cell">
+<div class="menu">
+<div class="menu-item" onclick="window.history.go(-1);"><i style="color: #848282"   class="material-icons">keyboard_return</i><span>Trở lại</span></div>
+<div onclick="window.location.assign('/')" class="menu-item"><i style="color: #848282" class="material-icons">tab</i><span>Trang chủ</span></div>
+<form method="POST" style="display: contents;">
+<button style="border:none" value="raovat" id="submit" name="submit" type="submit"  class="menu-item"><i style="color: #848282" class="material-icons">shop</i><span>Rao vặt</span></button>
+<button style="border:none" value="thongbao" id="submit" name="submit" type="submit"  class="menu-item"><i style="color: #848282" class="material-icons">vpn_lock</i><span>Thông báo</span></button>
+<button style="border:none" value="dangnhap" id="submit" name="submit" type="submit"  class="menu-item"><i style="color: #848282" class="material-icons">security</i><span>Tài khoản</span></button>
+</form>
+</div>
+</div>
+</div>
+</main>
+
+
+<!-- 
+<nav class="navbar navbar-inverse" style="background: #c5eafa;border:none;tẽt-align: center;width: 100%">
+  <div class="container-fluid" >
+
+         <span><a class="grabbing" onclick="window.history.go(-1);"><i style="color: #848282;font-size: 2.5rem;float: lèt;"   class="material-icons">keyboard_return</i></a></span>
+  </div>
+</nav>		 -->
+
+
+	    <div class="container">
+	        <div class="row">
+		        <div class="col-sm-8 col-sm-offset-2">
+		            <div class="wizard-container">
+		                <div class="card wizard-card" data-color="red" id="wizard">
+		                    <form action="" method="POST">
+		                    	<input  name="b_info" id="b_info" value="Mua:{{buy_name}}({{buy_info}}),Giá:{{buy_price}}₫" class="hidden">
+
+
+		                    	<div class="wizard-header">
+		                        	<h3 class="wizard-title">
+		                        	Tiến hành mua {{buy_name}}({{buy_info}})
+		                        	</h3> 
+
+		                    	</div>
+								<div class="wizard-navigation">
+									<ul>
+			                            <li><a href="#details" data-toggle="tab">Thông tin</a></li>
+			                            <li><a href="#captain" data-toggle="tab">Địa chỉ</a></li>
+			                            <li><a href="#description" data-toggle="tab">Thanh toán</a></li>
+			                        </ul>
+								</div>
+
+		                        <div class="tab-content">
+		                            <div class="tab-pane" id="details">
+		                            	<div class="row">
+			                            	<div class="col-sm-12">
+
+			                            	</div>
+		                                	<div class="col-sm-6">
+												<div class="input-group">
+													<span class="input-group-addon">
+														<i class="material-icons">person</i>
+													</span>
+													<div class="form-group label-floating">
+			                                          	<label class="control-label">Họ và tên</label>
+			                                          	<input name="b_name" id="b_name" type="text" class="form-control" required>
+			                                        </div>
+												</div>
+
+												<div class="input-group">
+													<span class="input-group-addon">
+														<i class="material-icons">phone_in_talk</i>
+													</span>
+													<div class="form-group label-floating">
+			                                          	<label class="control-label">SĐT</label>
+			                                          	<input name="b_phone" id="b_phone" type="number" class="form-control" required>
+			                                        </div></div>
+					
+		                                	</div>
+		                                	<div class="col-sm-6">
+		                                    	<div class="form-group label-floating">
+		                                        	<label class="control-label">Giới tính</label>
+	                                        		<select name="b_sex" id="b_sex" class="form-control" required>
+						<option disabled="" selected=""></option>
+	                                                	<option value="Nam"> Nam </option>
+	                                                	<option value="Nữ"> Nữ </option>
+	                                                	<option value="Đừng hỏi tôi">Đừng hỏi tôi</option>
+	                                                	
+		                                        	</select>
+		                                    	</div>
+						<div class="form-group label-floating">
+		                                        	<label class="control-label">Công việc</label>
+	                                        		<select name="b_job" id="b_job" class="form-control" required>
+						<option disabled="" selected=""></option>
+	                                                	<option value="Học sinh">Học sinh</option>
+	                                                	<option value="Sinh viên">Sinh viên</option>
+	                                                	<option value="Công chức">Công chức</option>
+	                                                	<option value="Tự do">Tự do</option>
+		                                        	</select>
+		                                    	</div>
+		                                		<div class="checkbox">
+							<label>
+							<input type="checkbox" name="optionsCheckboxes" required>
+							</label>
+							Đồng ý với <a>chính sách mua hàng</a> của chúng tôi
+							</div>
+
+
+
+
+		                                	</div>
+		                            	</div>
+		                            </div>
+		                            <div class="tab-pane" id="captain">
+		                              <!--   <h4 class="info-text">What type of room would you want? </h4> -->
+		                                <div class="row header">
+		              <!--                       <div class="col-sm-10 col-sm-offset-1">
+		                                        <div class="col-sm-4">
+		                                            <div class="choice" data-toggle="wizard-radio" rel="tooltip" title="This is good if you travel alone.">
+		                                                <input type="radio" name="job" value="Design">
+		                                                <div class="icon">
+		                                                    <i class="material-icons">weekend</i>
+		                                                </div>
+		                                                <h6>Single</h6>
+		                                            </div>
+		                                        </div>
+		                                        <div class="col-sm-4">
+		                                            <div class="choice" data-toggle="wizard-radio" rel="tooltip" title="Select this room if you're traveling with your family.">
+		                                                <input type="radio" name="job" value="Code">
+		                                                <div class="icon">
+		                                                    <i class="material-icons">home</i>
+		                                                </div>
+		                                                <h6>Family</h6>
+		                                            </div>
+		                                        </div>
+												<div class="col-sm-4">
+		                                            <div class="choice" data-toggle="wizard-radio" rel="tooltip" title="Select this option if you are coming with your team.">
+		                                                <input type="radio" name="job" value="Code">
+		                                                <div class="icon">
+		                                                    <i class="material-icons">business</i>
+		                                                </div>
+		                                                <h6>Business</h6>
+		                                            </div>
+		                                        </div>
+		                                    </div> -->
+		                                    <div class="form-group label-floating">
+		                                        	<label class="control-label">Khu vực</label>
+	                                        		<select name="b_place" id="b_place" class="form-control" required>
+						<option disabled="" selected=""></option>
+	                                                	<option value="Hà Nội"> Hà Nội </option>
+	                                                	<option value="TP.HCM"> TP.HCM</option>
+	                                                	<option value="Lân cận Hà Nội">Lân cận Hà Nội</option>
+	                                                	<option value="Lân cận TP.HCM">Lân cận TP.HCM</option>
+	                                                	
+		                                        	</select>
+		                                    	</div>
+						<div class="input-group" style="width: 100%">
+						<span class="input-group-addon">
+						<i class="material-icons">place</i>
+						</span>
+						<div class="form-group label-floating">
+						<label class="control-label">Địa chỉ chi tiết</label>
+						<input name="b_location" id="b_location"  class="form-control" required>
+						</div></div>
+		                                </div>
+		                            </div>
+		                            <div class="tab-pane" id="description">
+		                                <div class="row header">
+		                                  <!--   <h4 class="info-tẽt"> Drop ú a small description.</h4> -->
+		                                <div class="form-group label-floating">
+		                         
+		                                        	<label class="control-label">Hình thức thanh toán</label>
+	                                        		<select name="b_pay" id="b_pay" class="form-control" required>
+						<!-- <option disabled="" selected=""></option> -->
+	                                                	<option value="Sau khi giao hàng" selected="">Sau khi giao hàng</option>
+	                                                	<!-- <option value="Nữ">Chuy</option> -->
+	                                                	<!-- <option value="Đừng hỏi tôi">Lân cận Hà Nội</option>
+	                                                	<option value="Đừng hỏi tôi">Lân cận TP.HCM</option> -->
+	                                                	
+		                                        	</select>
+		                                    	</div>
+					    <div class="form-group label-floating">
+		                         
+		                                        	<label class="control-label">Thời gian nhận hàng</label>
+	                                        		<select name="b_time" id="b_time" class="form-control" required>
+						<option disabled="" selected=""></option>
+	                                                	<option value="Thứ 2">Thứ 2</option>
+	                                                	<option value="Thứ 3">Thứ 3</option>
+	                                                	<option value="Thứ 4">Thứ 4</option>
+	                                                	<option value="Thứ 5">Thứ 5</option>
+	                                                	<option value="Thứ 6">Thứ 6</option>
+	                                                	<option value="Thứ 7">Thứ 7</option>
+	                                                	<option value="Chủ nhật">Chủ nhật</option>
+	                                                	<option value="Các ngày trong tuần">Các ngày trong tuần</option>
+	            
+	                                                	
+		                                        	</select>
+		                                    	</div>
+		                                </div>
+		                            </div>
+		                        </div>
+	                        	<div class="wizard-footer">
+	                            	<div class="pull-right">
+	                                    <input type='button' style="    background: -webkit-linear-gradient(top,#d23f46,#da3f47);border-radius:0;font-size: 1rem;text-transform: uppercase;border: solid 1px #bbbbbb !important;" class='btn btn-next btn-fill btn-danger btn-wd' name='next' value='Tiếp theo' />
+	                                    <input style="    background: -webkit-linear-gradient(top,#d23f46,#da3f47);border-radius:0;font-size: 1rem;text-transform: uppercase;border: solid 1px #bbbbbb !important;"  type='submit' class='btn btn-finish btn-fill btn-danger btn-wd' id='submit' name='submit' value='Hoàn tất' />
+   
+
+	                                </div>
+	                                <div class="pull-left">
+	                                    <input style="color:white;background: #c1c1c1;border-radius:0;font-size: 1rem;text-transform: uppercase;"  type='button' class='btn btn-previous btn-fill btn-default btn-wd' name='previous' value='Quay lại' />
+                                                
+
+<!-- 
+										<div class="footer-checkbox">
+											<div class="col-sm-12">
+											  <div class="checkbox">
+												  <label>
+													  <input type="checkbox" name="optionsCheckboxes" required>
+												  </label>
+												  Đồng ý với <a>chính sách mua hàng</a> của chúng tôi
+											  </div>
+										  </div>
+										</div> -->
+	                                </div>
+	                                <div class="clearfix"></div>
+	                        	</div>
+		                    </form>
+		                </div>
+		            </div> <!-- wizard container -->
+		        </div>
+	    	</div> <!-- row -->
+		</div> <!--  big container -->
+
+<!-- 	    <div class="footer">
+	        <div class="container text-center">
+	             Made with <i class="fa fa-heart heart"></i> by <a href="http://www.creative-tim.com" target="_blank">Creative Tim</a>.
+	        </div>
+	    </div>
+	</div> -->
+</body>
+
+{% endblock %}

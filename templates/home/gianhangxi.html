@@ -1,0 +1,146 @@
+{% extends'home/layout.html' %}
+{% block title %}Gian hàng xỉ{% endblock %}
+{% block content %} 
+
+<style type="text/css">
+	input[type=text] {
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+
+input[type=text]:focus {
+    width: 50%;
+}
+.form-control{
+	width: auto;
+}
+i:hover{
+	transform: scale(1.2);
+}
+.grabbing {cursor: -webkit-grabbing; cursor: grabbing;}
+.my-cart-b{
+	box-shadow: none;
+}
+</style>
+<div id='app1'>
+<main>
+<div class="table">
+<div class="table-cell">
+<div class="menu">
+<div class="menu-item" onclick="window.history.go(-1);"><i style="color: #848282"   class="material-icons">keyboard_return</i><span>Trở lại</span></div>
+<div onclick="window.location.assign('/')" class="menu-item"><i style="color: #848282" class="material-icons">tab</i><span>Trang chủ</span></div>
+<form method="POST" style="display: contents;">
+<button style="border:none" value="raovat" id="submit" name="submit" type="submit"  class="menu-item"><i style="color: #848282" class="material-icons">shop</i><span>Rao vặt</span></button>
+<button style="border:none" value="thongbao" id="submit" name="submit" type="submit"  class="menu-item"><i style="color: #848282" class="material-icons">vpn_lock</i><span>Thông báo</span></button>
+<button style="border:none" value="dangnhap" id="submit" name="submit" type="submit"  class="menu-item"><i style="color: #848282" class="material-icons">security</i><span>Tài khoản</span></button>
+</form>
+</div>
+</div>
+</div>
+</main>
+
+
+<div class="product">
+<div class="container" style="border-right: 1px solid #bbbbbb;border-left: 1px solid #bbbbbb;">
+
+
+<div >
+	<br><br><br>
+<input type="text" class="form-control" placeholder="Tìm kiếm..." v-model="search" >
+<span style="font-size: 18px;float: left;">Các sản phẩm nổi bật<i style="color: #fab005;font-weight: bold" class="material-icons">star</i>&nbsp;</span>
+<br><br>
+<div class=" con-w3l" >
+<div class="col-md-3 pro-1" v-for="(store,index) in filteredstores">
+<div class="col-m" style="box-shadow: none">
+<a  class="offer-img hidden-md hidden-xs"><div class="offer"><p><span>New</span></p></div></a>
+<a v-bind:href="'#'+store.id" rel="modal:open"  data-toggle="modal" class="offer-img">
+<img v-bind:src="store.pic" class="img-responsive" style='height: 12rem; width: 12rem; object-fit: contain' alt="">
+</a>
+<div class="mid-1">
+<div class="women">
+<h6><a v-bind:href="'#'+store.id" rel="modal:open" >{% raw %}{{store.name}} {% endraw %}</a>{% raw %}( {{store.info}} ){% endraw %}</h6>
+</div>
+<div class="mid-2">
+<p style="color: #3C4858"><em class="item_status">{% raw %}{{store.status}}{% endraw %}</em></p>
+<div class="block">
+<div class="starbox small ghosting"> </div>
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="mid-2">
+<p ><em class="item_price">{% raw %}{{store.price}}{% endraw %}</em></p>
+<div class="block">
+<div class="starbox small ghosting"> </div>
+</div>
+<div class="clearfix"></div>
+</div>
+<div class="mid-2">
+<p style="color: #3C4858"><em class="item_status">CHÚ Ý: Mua từ {% raw %}{{store.limit}}{% endraw %}</em></p>
+<div class="block">
+<div class="starbox small ghosting"> </div>
+</div>
+<div class="clearfix"></div>
+</div>
+<form method="POST">
+<input name="hangxi_id" id="hangxi_id" class="hidden" v-bind:value="index+1">
+<div class="add add-2" >
+<div v-bind:id="store.id" class="modal">
+<head class="header"><h4>Chi tiết {% raw %}{{store.name}} {% endraw %}</h4></head>
+<br>
+<img v-bind:src="store.pic" class="img-responsive" style='margin-left:auto;margin-right:auto;height: 12rem; width: 12rem; object-fit: contain' alt="">
+<p> Tên: {% raw %}{{store.name}} {% endraw %}</p>
+<!-- 		  <p>Thông số kĩ thuật: </p> -->
+<p>Tình trạng máy: </p>
+<p>Gi á bán bao gồm bảo hành:</p>
+<p>Gi á bán không bao gồm bảo hành: </p>
+<p>Thời hạn bảo hành(nếu có): 6 tháng</p>
+<p>Thời gian giao hàng: trong vòng 7 ngày</p>
+<p>Hình thức thanh toán: Thanh toán khi nhận hàng</p>
+<!-- 	  <a style="float: right;" href="#" rel="modal:close">Trở lại</a> -->
+<a href="#" rel="modal:close" class="btn btn-basic" style="float:right;background: #f5f5f5;padding: 0.6rem;">
+<i style="color: #1a2745;font-size: 3rem;" class="material-icons">keyboard_return</i>
+<div class="ripple-container"></div></a>
+
+</div>
+<!-- Link to open the modal -->
+<button style="border:none;background: transparent;">
+
+<a><button style="background: #029241" type='submit' value="hangxi" name='submit' id='submit'  class="btn btn-danger my-cart-btn1 my-cart-b"  ><i style="font-size: 1rem" class="material-icons">assignment_turned_in</i>MUA</button></a>
+</button>
+<!-- endbuy -->
+<!-- <button  name="submit" id="submit" type="submit" value="product" class="btn btn-danger my-cart-btn1 my-cart-b"><i style="font-size: 1rem" class="material-icons">swap_horizontal_circle</i> ĐỔI</button> -->
+</form>
+</div>
+</div></div>
+<div class="clearfix"></div>
+</div>
+</div>
+</div>
+<div class="spec ">
+</div>
+</div></div>
+<script type="text/javascript">
+var app1=new Vue({
+el:'#app1',
+search:'',
+data: function(){
+return {
+search: '',
+stores:[
+{% autoescape false %}
+{{hangxi | replace ('&#39;','"') }}
+{% endautoescape %}
+]};
+},
+
+computed:
+{
+filteredstores:function()
+{
+var self=this;
+return this.stores.filter(function(cust){return cust.name.toLowerCase().indexOf(self.search.toLowerCase())>=0;});
+}
+},
+})
+</script>
+{% endblock %}

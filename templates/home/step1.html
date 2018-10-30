@@ -1,0 +1,71 @@
+{% extends 'home/layout.html' %}
+
+
+{% block title %}
+Bước 1
+{% endblock %}
+
+
+
+{% block content %}
+<!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous"> -->
+
+<br>
+<h2>Thống kê giao dịch: {{count}} đ</h2>
+<div class="ser-t"><b></b><b class="line"></b></div>
+<br>
+<h4> Hoàn tất giao dịch bằng cách cung cấp cho chúng tôi một số thông tin sau: </h4>
+<br>
+<h5><u>Chú ý: </u>Bạn đang tiến hành đổi <b>{{product_name}}</b> lấy <b>{{name}}</b></h5>
+<br>
+<form class="header" action="/step-2" method="POST" >
+<div class="input-group">
+<input id="fullname" type="text" class="form-control" name="fullname" placeholder="Họ và tên" required>
+<span style="background: #22c76e;" class="input-group-addon"><!-- <i class="fas fa-user"></i> --></span>   
+</div>
+<div class="input-group" id="myplace">
+<!-- <input id="place" type="text" class="form-control" name="place" placeholder="Địa chỉ" required> -->
+<select id="place" name="place" class="form-control"  v-model="selected" required>
+	<option value="" disabled selected>Địa chỉ</option>
+	<option v-for="item in items">{% raw %}{{item.text}} {% endraw %}</option>
+</select>
+
+<span style="background: #22c76e;" class="input-group-addon"><!-- <i class="fas fa-map-marker-alt"></i> --></span>
+</div>
+<div class="input-group">
+<input id="phone" type="text" class="form-control" name="phone" placeholder="Số điện thoại" required>
+<span style="background: #22c76e;" class="input-group-addon"><!-- <i class="fas fa-phone-volume"></i> --></span>
+</div>
+<input style="display: none"  name="result" id="result" value="{{count}} đ">
+<input style="display: none"  name="model" id="model" value="{{name}}">
+<input style="display: none"  name="detail" id="detail" value="{{product_name}} đổi {{name}}">
+<button class="btn btn-danger my-cart-btn1 my-cart-b " type="submit">Gửi đi</button>
+<p><a href="/">Quay lại trang chủ</a></p>
+</form>
+<script type="text/javascript">
+	new Vue({
+el:'#myplace',
+data:{
+    selected:'',
+    items:[
+{text:'Quận Hà Đông'},
+{text:'Quận Thanh Xuân'},
+{text:'Quận Đống Đa'},
+{text:'Quận Cầu Giấy'},
+{text:'Quận Tây Hồ'},
+{text:'Quận Nam Từ Liêm'},
+{text:'Quận Bắc Từ Liêm'},
+{text:'Quận Hoàng Mai'},
+{text:'Quận Ba Đình'},
+{text:'Quận Hoàn Kiếm'},
+{text:'Quận Hai Bà Trưng'},
+{text:'Quận Long Biên'},
+{text:'Huyện Thanh Trì'},
+{text:'Huyện Gia Lâm'},
+{text:'Huyện Đông Anh'},
+{text:'Các huyện khác trực thuộc Hà Nội'},
+{text:'Các tỉnh thành khác'},
+],
+}})
+</script>
+{% endblock %}

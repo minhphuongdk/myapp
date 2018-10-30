@@ -1,0 +1,23 @@
+{% extends 'home/layout.html' %}
+    {% block content %}
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+
+
+  <form method="POST" id="pro" action="/test">
+    <input  id ='app' name='app' v-bind:value="message"  >
+
+    <a href="#" type="submit">Click</a>
+
+
+
+  </form>
+<script type="text/javascript">
+	var app = new Vue({
+  el: '#pro',
+  data: {
+    message: 'Do you wanna build a Vue app?'
+  }
+})
+</script>
+
+{% endblock %}

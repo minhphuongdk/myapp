@@ -1,0 +1,115 @@
+{% extends 'home/layout2.html' %}
+{% block title %}
+Quản lý mua bán
+{% endblock %}
+{% block content %}
+<meta name="viewport" content="width=1024">
+    <link rel="stylesheet" type="text/css" href="/admin/static/css/checkbox.css" >
+<!--     <div class="widget widget-table action-table"  > -->
+    <div class="widget-header" > <i class="icon-label-list"></i>
+    <br>
+    <h4>Thống kê</h4>
+    <div class="ser-t"><b></b><b class="line"></b></div>
+    <br>
+    </div>
+    <div class="widget-content" >
+    <div class="container">
+    <div class="row">
+    <div class="col-sm-2">
+    <label> <u>Trạng thái</u></label>
+    </div>
+    <div class="col-sm-1">
+    <label><u>Họ và tên</u></label>
+    </div>
+    <div class="col-sm-1">
+    <label><u>SĐT</u></label>
+    </div>
+    <div class="col-sm-1">
+    <label><u>Giới tính</u></label>
+    </div>
+    <div class="col-sm-1">
+    <label><u>Công việc</u> </label>
+    </div>
+    <div class="col-sm-1">
+    <label><u>Giao dịch</u></label>
+    </div>
+      <div class="col-sm-1">
+    <label><u>Thời gian nhận</u> </label>
+    </div>
+    <div class="col-sm-1">
+    <label><u>Kiểu thanh toán</u></label>
+    </div>
+    <div class="col-sm-1">
+    <label><u>Khu vực </u></label>
+    </div>
+    <div class="col-sm-2">
+    <label><u>Chi tiết</u></label>
+    </div>
+    </div>
+    </div>
+    <style type="text/css">
+    @media only screen and (max-width: 375px){
+    small, .small{font-size: 44%}
+    }
+    </style>
+    <div  id="appone">
+    <div v-for="(item,index) in items" >
+    <form method="POST">
+    <div class="container">
+    <div class="row">
+            <div class="col-sm-2">
+    <label  title="Đã xem">
+    <input  type="checkbox" >
+    <span class="checkmark"></span>
+    &nbsp;&nbsp;
+    <button value="delete" id="submit" name="submit" @click="$delete(items, index)" type="submit" title="Xóa"   class="btn btn-danger btn-small"></button>
+    </label>
+    </div>
+    <div class="col-sm-1">
+    <input type="hidden"   v-model="index" id='index' name='index'>
+    <small> {% raw %} {{item.b_name}} {% endraw %}</small>
+    </div>
+    <div class="col-sm-1">
+    <small> {% raw %}{{item.b_phone}}{% endraw %}</small>
+    </div>
+    <div class="col-sm-1">
+    <small>  {% raw %}{{item.b_sex}}{% endraw %}</small>
+    </div>
+    <div class="col-sm-1">
+    <small> {% raw %}{{item.b_job}}{% endraw %}</small>
+    </div>
+    <div class="col-sm-1">
+    <small> {% raw %}{{item.b_info}}{% endraw %}</small>
+    </div>
+   <div class="col-sm-1">
+    <small> {% raw %}{{item.b_time}}{% endraw %}</small>
+    </div>
+   <div class="col-sm-1">
+    <small> {% raw %}{{item.b_pay}}{% endraw %}</small>
+    </div>
+       <div class="col-sm-1">
+    <small> {% raw %}{{item.b_place}}{% endraw %}</small>
+    </div>
+       <div class="col-sm-2">
+    <small> {% raw %}{{item.b_location}}{% endraw %}</small>
+    </div>
+  </div>
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+<script type="text/javascript">
+var app = new Vue({
+el:'#appone',
+data:{
+items:[ {% autoescape false %}
+{{buy| replace ('&#39;','"')}}
+{% endautoescape %}
+],
+
+
+}})
+
+</script>
+{% endblock %}

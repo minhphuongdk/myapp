@@ -1,0 +1,85 @@
+{% extends'home/layout.html' %}
+{% block title %}Admin Post{% endblock %}
+{% block content %}
+<link rel="stylesheet" href="admin/static/css/style.css">
+<div class="container">
+	<div class="row">
+
+    <div class="col-sm-4" style="border-right: solid #008fe5;">
+		<div class="form_main">
+                <h4 >Trình  đăng bài </h4>
+                <h5><i>(Sản phẩm chính)</i></h5>
+<div class="ser-t"><b></b><b class="line"></b></div>
+                <div class="form" style="text-align: center;">
+                <form action="/administrator" method="POST" >
+
+                    <input type="text"  placeholder="Tên sản phẩm" class="form-control"  value="" id="name" name="name" required >
+                    <br>
+                    <br>
+                    <input type="text" placeholder="Phiên bản"   class="form-control" value="" id="info" name="info"  required  >
+                    <br>
+                    <br>
+                    <input type="text"  placeholder="URL ảnh"  class="form-control" value="" id="pic" name="pic"  required >
+                    <br>
+                    <br>
+                    <input type="text" placeholder="Giá"  class="form-control" value="" id="price" name="price"  required >
+                    <br>
+                    <br>
+                    <textarea type="text"  placeholder="Tình trạng" id="status" class="form-control" name="status"   required ></textarea>
+                     <br>
+                      <br>
+                     <button class="btn btn-danger my-cart-btn my-cart-b " type="submit" value="myproduct" id="submit" name="submit">Đăng bài</button>
+                </form>
+            </div>
+            </div>
+    <div class="form_main">
+        <br>
+                <h5><i>(Mặt hàng xỉ)</i></h5>
+<div class="ser-t"><b></b><b class="line"></b></div>
+                <div class="form" style="text-align: center;">
+                <form action="/administrator" method="POST" >
+
+                    <input type="text"  placeholder="Tên sản phẩm" class="form-control"  value="" id="name" name="name" required >
+                    <br>
+                    <br>
+                    <input type="text" placeholder="Phiên bản"   class="form-control" value="" id="info" name="info"  required  >
+                    <br>
+                    <br>
+                    <input type="text"  placeholder="URL ảnh"  class="form-control" value="" id="pic" name="pic"  required >
+                    <br>
+                    <br>
+                    <input type="text" placeholder="Giá"  class="form-control" value="" id="price" name="price"  required >
+                    <br>
+                    <br>
+                     <input type="text" placeholder="Giá bằng số"  class="form-control" value="" id="myprice" name="myprice"  required >
+                     <br>
+                    <br>
+                    <textarea type="text"  placeholder="Tình trạng" id="status" class="form-control" name="status"   required ></textarea>
+                     <br>
+                      <br>
+                      <input type="text"  placeholder="Mua ít nhất" id="limit" class="form-control" name="limit"   required >
+                      <br>
+                      <br>
+                     <button class="btn btn-danger my-cart-btn my-cart-b " value="hangxi" type="submit" value="submit" id="submit" name="submit">Đăng bài</button>
+                </form>
+            </div>
+            </div>
+
+
+            </div>
+
+ <div class="col-sm-8">
+    <div class="form_main">
+   <h4 >Trình  quản lý</h4>
+<div class="ser-t"><b></b><b class="line"></b></div>
+<br>
+<a class="btn btn-danger my-cart-btn my-cart-b " >Quản lý tài khoản</a>
+<a href="/administrator/giao-luu" class="btn btn-danger my-cart-btn my-cart-b " >Quản lý giao lưu</a>
+<a href="/administrator/buy" class="btn btn-danger my-cart-btn my-cart-b " >Quản lý mua bán</a>
+<a href="/administrator/hangxi" class="btn btn-danger my-cart-btn my-cart-b " >Quản lý hàng xỉ</a>
+<a class="btn btn-danger my-cart-btn my-cart-b " >Đấu gi á</a>
+</div>
+    </div>
+</div>
+</div>
+{% endblock %}

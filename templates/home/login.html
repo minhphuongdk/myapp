@@ -1,0 +1,42 @@
+{% extends 'home/layout.html' %}
+
+{% block tittle %}
+Đăng ký
+{% endblock %}
+{% block content %}
+
+
+<div id="myform">
+<register-form></register-form>
+</div>
+<br>
+
+
+<script type="text/javascript">
+Vue.component('register-form', {
+  // data:function(){
+  //   return {
+  //     count:0
+  //   }
+  // },
+  template:`<form  method='POST'>
+  <div class="container">
+    <h1>Đăng nhập</h1>
+    <br>
+    <label for="email"><b>Email</b></label>
+    <input type="text" placeholder="Enter Email" id="email" name="email" required>
+    <br>
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" id="pwd" name="pwd" required>
+    <br>
+    <button type="submit" class="registerbtn">Login</button>
+  </div>
+  <div class="container signin">
+  </div>
+</form>`
+}),
+new Vue ({
+  el:"#myform"
+})
+</script>
+{% endblock %}

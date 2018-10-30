@@ -1,0 +1,152 @@
+{% extends 'home/layout.html' %}
+{% block title %}
+Trao đổi
+{% endblock %}
+{% block content  %}
+<style type="text/css">
+i:hover{
+transform: scale(1.2);
+}
+.grabbing {cursor: -webkit-grabbing; cursor: grabbing;}
+.my-cart-b{
+box-shadow: none;
+}
+</style>
+<main>
+<div class="table">
+<div class="table-cell">
+<div class="menu">
+<div class="menu-item" onclick="window.history.go(-1);"><i style="color: #848282"   class="material-icons">keyboard_return</i><span>Trở lại</span></div>
+<div onclick="window.location.assign('/')" class="menu-item"><i style="color: #848282" class="material-icons">tab</i><span>Trang chủ</span></div>
+<form method="POST" style="display: contents;">
+<button style="border:none" value="raovat" id="submit" name="submit" type="submit"  class="menu-item"><i style="color: #848282" class="material-icons">shop</i><span>Rao vặt</span></button>
+<button style="border:none" value="thongbao" id="submit" name="submit" type="submit"  class="menu-item"><i style="color: #848282" class="material-icons">vpn_lock</i><span>Thông báo</span></button>
+<button style="border:none" value="dangnhap" id="submit" name="submit" type="submit"  class="menu-item"><i style="color: #848282" class="material-icons">security</i><span>Tài khoản</span></button>
+</form>
+</div>
+</div>
+</div>
+</main>
+<div class="container">
+<div class="row">
+<span class="header">
+<br><br>
+<h2>Tiến hành trao đổi</h2></span>
+<div class="ser-t">
+<b></b>
+<b class="line"></b>
+</div>
+<br>
+<div class="container-fluid">
+<div class="row">
+<div class="col-sm-4" >
+<p class="header"><u>Điện thoại cần trao đổi</u></p>
+<br>
+<br>
+<style type="text/css">
+img:hover{transform: scale(1.06);}	
+</style>
+<img src="{{pic}}" class="img-responsive" style="width: 36rem;border: solid #c1c1c1 1px;border-radius: 5px;">
+<br><br>
+<style type="text/css">
+	@import url(https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css);
+
+</style>
+<div class="box" > 
+	<div class="text-center"><u>Thông tin sản phẩm</u></div>
+	<br>
+<div class="row">
+<div class="col-xs-6">
+<p><i class="fa fa-mobile"></i>&nbsp;&nbsp;{{name}}</p>
+<p><i class="fa fa-battery-three-quarters"></i>&nbsp;&nbsp;{{info}}</p>
+<p><i class="fa fa-plus-square"></i>&nbsp;&nbsp;{{status}}</p>
+<p><i class="fa fa-dollar"></i>&nbsp;&nbsp;{{price}} ₫</p>
+</div>	
+<div class="col-xs-6">
+<p><i class="fa fa-check-circle"></i>&nbsp;&nbsp;Dán cường lực</p>
+<p><i class="fa fa-check-circle"></i>&nbsp;&nbsp;Ốp  lưng</p>
+<p><i class="fa fa-check-circle"></i>&nbsp;&nbsp;Cáp sạc</p>
+<p><i class="fa fa-check-circle"></i>&nbsp;&nbsp;Phiếu giảm giá </p>	
+</div>
+</div>
+</div>
+
+
+<br>
+</div>
+<div id='myapp' class="col-sm-8" style="text-align: center;">
+<form   action="/step-1" method="POST">
+<p class="header"><u>Điện thoại của bạn</u></p>
+<br>
+<br>
+<select   v-model="selected" class="form-control" style="margin-left: auto;margin-right: auto;width: 11rem;background-color: #fab005;color: white" >
+<option   v-for="option in options" v-if="option.text !='{{name}}' "   v-bind:value=[option.value,option.text]  >
+{% raw %}{{ option.text }}{% endraw %} 
+</option>
+</select>
+<br>
+<br>
+<span >Định Giá:{% raw %} {{ selected[0]}} ₫{% endraw %}</span>
+<span>{% raw %} {{ count }} ₫{% endraw %}</span>
+<div v-if="selected[0]=='samsung' ">
+<br>
+<select v-model="selected" class="form-control" style="margin-left: auto;margin-right: auto;width: 11rem;background-color: rgb(27, 36, 47);color: white" required>
+<option v-for="samsung in samsungs" v-bind:value=[samsung.value,samsung.text]>{% raw %}{{samsung.text}}{% endraw %}</option>
+</select>
+</div>
+<br>
+<br>
+<input  name="count" id="count"  v-bind:value="count" style="display: none" >
+<input  name="product_name" id="product_name"  v-bind:value="selected[1]" style="display: none" >
+<button type="submit" class="btn btn-danger my-cart-btn1 my-cart-b ">Tiến hành trao đổi</button>
+<p></p>
+<img style="margin-right: auto;margin-left: auto;width: 16rem" class="lazy"  src="static/img/more.png" style="display: block;">
+
+<br>
+</form>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+new Vue({
+el: '#myapp',
+data: {
+selected: ' ' ,
+options: [
+{ text: 'iphone 4', value: '500000' },
+{ text: 'iphone 5', value: '800000' },
+{ text: 'iphone 5s', value: '1200000' },
+{text:'iphone 6', value:'2800000'},
+{text:'iphone 6s',value:'3500000'},
+{text:'iphone 7',value:'8000000'},
+{text:'samsung',value:'samsung'},
+],
+samsungs:[
+{text:'galaxy y',value:'150000'},
+{text:'galaxy s1',value:'300000'},
+]
+
+},
+computed:{
+count: function() {
+if (Number(this.selected[0]) > Number({{new_price}})){
+count=Number(this.selected[0])-Number({{new_price}}) 
+return  'Dư: '+count }
+else if (Number(this.selected[0])=='') {
+return 0
+}
+else if(this.selected[0]=='samsung'){	
+  return 0
+}
+else{
+count=Number({{new_price}})-Number(this.selected[0])
+return 'Thiếu: ' + count
+}
+} 
+
+}
+})
+</script>
+{% endblock  %} 

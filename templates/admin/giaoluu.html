@@ -1,0 +1,91 @@
+{% extends 'home/layout2.html' %}
+{% block title %}
+Quản lý giao lưu
+{% endblock %}
+{% block content %}
+<meta name="viewport" content="width=1024">
+    <link rel="stylesheet" type="text/css" href="/admin/static/css/checkbox.css" >
+    <div class="widget widget-table action-table"  >
+    <div class="widget-header" > <i class="icon-label-list"></i>
+    <br>
+    <h4>Thống kê</h4>
+    <div class="ser-t"><b></b><b class="line"></b></div>
+    <br>
+    </div>
+    <div class="widget-content" >
+    <div class="container">
+    <div class="row">
+    <div class="col-xs-2">
+    <label> <u>Họ và tên</u></label>
+    </div>
+    <div class="col-xs-2">
+    <label><u> Địa chỉ</u></label>
+    </div>
+    <div class="col-xs-2">
+    <label><u> SĐT</u></label>
+    </div>
+    <div class="col-xs-2">
+    <label><u> Chi tiết</u> </label>
+    </div>
+    <div class="col-xs-2">
+    <label><u> Kết quả </u> </label>
+    </div>
+    <div class="col-xs-2">
+    <label><u>Trạng thái</u></label>
+    </div>
+    </div>
+    </div>
+    <style type="text/css">
+    @media only screen and (max-width: 375px){
+    small, .small{font-size: 44%}
+    }
+    </style>
+    <div  id="appone">
+    <div v-for="(item,index) in items" >
+    <form method="POST">
+    <div class="container">
+    <div class="row">
+    <div class="col-xs-2">
+    <input type="hidden"   v-model="index" id='index' name='index'>
+    <small> {% raw %} {{item.name}} {% endraw %}</small>
+    </div>
+    <div class="col-xs-2">
+    <small> {% raw %}{{item.place}}{% endraw %}</small>
+    </div>
+    <div class="col-xs-2">
+    <small>  {% raw %}{{item.phone}}{% endraw %}</small>
+    </div>
+    <div class="col-xs-2">
+    <small> {% raw %}{{item.detail}}{% endraw %}</small>
+    </div>
+    <div class="col-xs-2">
+    <small> {% raw %}{{item.result}}{% endraw %}</small>
+    </div>
+    <div class="col-xs-2">
+    <label  title="Đã xem">
+    <input  type="checkbox" >
+    <span class="checkmark"></span>
+    &nbsp;&nbsp;
+    <button value="delete" id="submit" name="submit" @click="$delete(items, index)" type="submit" title="Xóa"   class="btn btn-danger btn-small"></button>
+    </label>
+    </div>
+  </div>
+    </form>
+    </div>
+    </div>
+    </div>
+    </div>
+<script type="text/javascript">
+var app = new Vue({
+el:'#appone',
+data:{
+items:[ {% autoescape false %}
+{{details | replace ('&#39;','"')}}
+{% endautoescape %}
+],
+
+
+}})
+
+</script>
+{% endblock %}

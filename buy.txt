@@ -1,0 +1,3 @@
+{b_name:'Nguyễn Minh Phương',b_phone:'0979187988',b_sex:'Nam',b_job:'Học sinh',b_place:'Hà Nội',b_location:'Hà Đông, Hà Nội',b_pay:'Sau khi giao hàng',b_info:'Mua:iphone 6 plus(16G),Giá:3.500.000₫',b_time:'Thứ 2'},
+{b_name:'Nguyễn Minh Phương',b_phone:'0979187988',b_sex:'Nam',b_job:'Sinh viên',b_place:'Hà Nội',b_location:'Hà Nội',b_pay:'Sau khi giao hàng',b_info:'Mua:iphone 6 plus(16G),Giá:3.500.000₫',b_time:'Thứ 2'},
+{b_name:'Nguyễn Minh Phương',b_phone:'0979187988',b_sex:'Nam',b_job:'Học sinh',b_place:'Hà Nội',b_location:'Hà Nội',b_pay:'Sau khi giao hàng',b_info:'Mua:iphone 6 plus(16G),Giá:3.500.000₫',b_time:'Thứ 4'},
